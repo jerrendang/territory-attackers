@@ -2,7 +2,13 @@
     border: 1px solid black;
 }
 
-body{
+
+
+.wrapper{
     display:block;
     text-align: center;
+}
+
+#side_screen{
+    border: 1px solid black;
 }
