@@ -33,7 +33,11 @@ export default class InputHandler{
                 case 83:
                     player.moveDown();
                     break;
+            }
+        });
 
+        document.addEventListener("keydown", event => {
+            switch(event.keyCode){
                 case 80:
                     projectile_controller.shoot();
                     break;
@@ -41,7 +45,7 @@ export default class InputHandler{
                     projectile_controller.shoot();
                     break;
             }
-        });
+        })
 
         document.addEventListener("keyup", event => { //keyup for player movement
             switch(event.keyCode){

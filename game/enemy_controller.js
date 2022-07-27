@@ -7,8 +7,8 @@ export default class Enemy_Controller{
         this.GAME_HEIGHT = GAME_HEIGHT;
         this.GAME_WIDTH = GAME_WIDTH;
 
-        this.default_delay = 90;
-        this.spawn_delay = 90;
+        this.default_delay = 150;
+        this.spawn_delay = 150;
     }
 
     draw(context, enemy, player){
@@ -47,6 +47,9 @@ export default class Enemy_Controller{
         if (this.spawn_delay == 0){
             this.enemies.push(new Enemy(this.GAME_WIDTH));
             this.spawn_delay = this.default_delay;
+            if (this.default_delay != 50){
+                this.default_delay -= 5;
+            }
         }
         this.spawn_delay -= 1;
     }

@@ -1,14 +1,52 @@
-#game-screen{
-    border: 1px solid black;
+body{
+    background-color: black;
 }
 
-
-
-.wrapper{
-    display:block;
+.g_screens{
+    display:inline-block;
     text-align: center;
+    white-space: nowrap;
+}
+
+#control_pics{
+    position: absolute;
+    background-color: black;
+}
+
+#game_screen{
+    border: 1px solid white;
+    border-radius: 3%;
+    margin-left: 30vw;
+    background: rgb(0,0,0);
 }
 
 #side_screen{
     border: 1px solid black;
+    background: rgb(0,0,0);
+}
+
+#button_div{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: blue;
+    align-items: center;
+}
+
+#button{
+    display: none;
+    position: absolute;
+}
+
+#icon{
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 5%;
+    background-color: black;
+    color: white;
+}
+
+#icon:hover{
+    cursor: pointer;
 }

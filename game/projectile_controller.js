@@ -4,18 +4,33 @@ export default class Projectile_Controller{
     projectiles = [];
     timerTillNextProjectile = 0;
 
+
     constructor(player){
         this.player = player;
     }
 
-    draw(context, projectile){
+    draw(context, projectile, projectile_image){
         if (projectile.position.y <= 0){
             let index = this.projectiles.indexOf(projectile);
             this.projectiles.splice(index, 1);
         }
         else{
-            context.fillStyle = "black";
-            context.fillRect(projectile.position.x - projectile.width / 2, projectile.position.y, projectile.width, projectile.height);
+            //context.fillStyle = "white";
+            //context.fillRect(projectile.position.x - projectile.width / 2, projectile.position.y, projectile.width, projectile.height);
+            let image_width = 550;
+            let image_height = 570;
+
+            context.drawImage(
+                projectile_image,
+                0,
+                0,
+                image_width,
+                image_height,
+                projectile.position.x - projectile.width / 2,
+                projectile.position.y,
+                projectile.width, 
+                projectile.height
+                );
         }
     }
 

@@ -2,6 +2,12 @@ export default class Player{
     constructor(gameWidth, gameHeight) {
         this.width = 30;
         this.height = 30;
+
+        this.img_width = 875;
+        this.img_height = 745;
+
+        this.img_position_x = 680;
+        this.img_position_y = 260;
         
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
@@ -20,23 +26,65 @@ export default class Player{
         this.score = 0;
     }
 
-    draw_lives(side_context){
+    draw_lives(side_context, player_img){
         for (let x = 0; x < this.lives; x += 1){
-            side_context.fillRect(0, 100 * x, 50, 50);
+            side_context.drawImage(player_img,
+                                    this.img_position_x,
+                                    this.img_position_y,
+                                    this.img_width,
+                                    this.img_height,
+                                    60 * x,
+                                    50,
+                                    50,
+                                    50);
         };
     }
 
-    draw(context) {
+    draw(context, player_img) {
         //context.fillStyle = "black";
         //context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        /*
         context.beginPath();
         context.moveTo(this.position.x + (this.width / 2), this.position.y);
         context.lineTo(this.position.x + this.width, this.position.y + this.height);
         context.lineTo(this.position.x, this.position.y + this.height);
         context.stroke();
 
-        context.fillStyle = "black";
+        context.fillStyle = "white";
         context.fill();
+        */
+       /*
+        let img_width = 1640;
+        let img_height = 2360;
+
+        context.drawImage(
+            player_img,
+            0,
+            0,
+            img_width,
+            img_height,
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
+        */
+       
+        let img_width = 875;
+        let img_height = 745;
+
+        context.drawImage(
+            player_img,
+            this.img_position_x,
+            this.img_position_y,
+            this.img_width,
+            this.img_height,
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
+        
     }
 
     update(dt){
