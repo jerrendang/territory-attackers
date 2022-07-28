@@ -73,7 +73,7 @@ export default class Enemy_Controller{
         if (this.spawn_delay == 0){
             this.enemies.push(new Enemy(this.GAME_WIDTH));
             this.spawn_delay = this.default_delay;
-            if (this.default_delay != 50){
+            if (this.default_delay != 30){
                 this.default_delay -= 3;
             }
         }
@@ -83,6 +83,6 @@ export default class Enemy_Controller{
     reset(){
         this.enemies = [];
         this.default_delay = 150;
-        this.spawn_delay =150;
+        this.spawn_delay = 150;
     }
 }
