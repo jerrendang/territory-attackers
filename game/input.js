@@ -1,5 +1,5 @@
 export default class InputHandler{
-    constructor(player, projectile_controller){
+    constructor(player, projectile_controller, start_button){
         document.addEventListener("keydown", event => { //keydown for player movement
             switch(event.keyCode){
                 case 37:
@@ -98,13 +98,5 @@ export default class InputHandler{
                     break;
             }
         });
-
-        document.addEventListener("keydown", event => {
-            switch(event.keyCode){
-                case 80:
-                    return true;
-            }
-        });
-
     }
 }

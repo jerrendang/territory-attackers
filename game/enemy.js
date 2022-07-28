@@ -1,6 +1,6 @@
 export default class Enemy{
     constructor(GAME_WIDTH){
-        this.health = 4;
+        this.health = 3;
 
 
         this.tempx = Math.floor(Math.random() * GAME_WIDTH);

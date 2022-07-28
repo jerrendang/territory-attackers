@@ -69,9 +69,6 @@ export default class Player{
             this.height
         );
         */
-       
-        let img_width = 875;
-        let img_height = 745;
 
         context.drawImage(
             player_img,
@@ -132,5 +129,14 @@ export default class Player{
 
     stopY(){
         this.Yspeed = 0;
+    }
+
+    reset(){
+        this.lives = 3;
+        this.score = 0;
+        this.position = {
+            x: this.gameWidth / 2 - this.width / 2,
+            y: this.gameHeight - this.height - 10,
+        };
     }
 }

@@ -7,6 +7,9 @@ import Collision_Controller from "./collision_controller";
 const canvas = document.getElementById("game_screen");
 const context = canvas.getContext("2d");
 
+const start_button = document.getElementById("button");
+const start_button_label = document.getElementById("b_label");
+
 const side_screen = document.getElementById("side_screen");
 const side_context = side_screen.getContext("2d");
 
@@ -31,6 +34,9 @@ lose_message.src = "game/assets/images/lose_message.png";
 
 const control_pics = new Image();
 control_pics.src = "game/assets/images/controls.png";
+
+const enemies_pics = new Image();
+enemies_pics.src = "game/assets/images/enemies.png";
 // images
 
 const GAME_WIDTH = 450; //add 415 for coordinates
@@ -44,7 +50,7 @@ let enemy_controller = new Enemy_Controller(GAME_WIDTH, GAME_HEIGHT);
 
 let collision_controller = new Collision_Controller(projectile_controller, enemy_controller);
 
-player.draw(context, player_img);
+//player.draw(context, player_img);
 
 let last_time = 0;
 /*
@@ -76,18 +82,22 @@ function game_loop(time_stamp){
                             GAME_HEIGHT / 2 - 100,
                             431,
                             65);
+        start_button_label.style = "display: block; margin-top: 10vh; margin-left: 4vw;";
+        start_button_label.innerHTML = 
+        "<img src='game/assets/images/again_image.png' alt='no pic' style='height: 161px; width: 182px;'>";
+        
         return;
     }
 
-    control_context.drawImage(control_pics,
+    control_context.drawImage(control_pics, //draws controls
         150,
         230,
         1415,
         580,
         0,
         0,
-        460,
-        193);
+        353,
+        145);
 
     context.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);
     side_context.clearRect(0, 0, SIDE_WIDTH, SIDE_HEIGHT);
@@ -106,7 +116,7 @@ function game_loop(time_stamp){
 
     enemy_controller.spawn();
     enemy_controller.enemies.forEach(enemy => {
-        enemy_controller.draw(context, enemy, player);
+        enemy_controller.draw(context, enemy, player, enemies_pics);
         enemy_controller.update(delta_time, enemy);
     });
 
@@ -121,7 +131,14 @@ function game_loop(time_stamp){
     
 }
 
-game_loop();
+new InputHandler(player, projectile_controller, start_button);
 
-new InputHandler(player, projectile_controller);
 
+start_button.addEventListener("click", function(e){
+    start_button_label.style = "display: none";
+    player.reset();
+    enemy_controller.reset();
+    projectile_controller.reset();
+    player.draw(context, player_img);
+    game_loop();
+});

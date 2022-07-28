@@ -46,5 +46,8 @@ export default class Projectile_Controller{
         };
     }
     
-
+    reset(){
+        this.projectiles = [];
+        this.timerTillNextProjectile = 0;
+    }
 }

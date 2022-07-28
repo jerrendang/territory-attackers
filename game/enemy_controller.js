@@ -11,7 +11,7 @@ export default class Enemy_Controller{
         this.spawn_delay = 150;
     }
 
-    draw(context, enemy, player){
+    draw(context, enemy, player, enemy_image){
         if (enemy.position.y >= this.GAME_HEIGHT){
             let index = this.enemies.indexOf(enemy);
             this.enemies.splice(index, 1);
@@ -19,19 +19,45 @@ export default class Enemy_Controller{
         }
         else{
             switch(enemy.health){
-                case 4:
-                    context.fillStyle = "green";
-                    break;
                 case 3:
-                    context.fillStyle = "yellow";
+                    context.drawImage(
+                        enemy_image,
+                        130,
+                        120,
+                        670,
+                        632,
+                        enemy.position.x,
+                        enemy.position.y,
+                        enemy.width,
+                        enemy.height
+                    );
                     break;
                 case 2:
-                    context.fillStyle = "orange";
+                    context.drawImage(
+                        enemy_image,
+                        860,
+                        120,
+                        670,
+                        632,
+                        enemy.position.x,
+                        enemy.position.y,
+                        enemy.width,
+                        enemy.height
+                    );
                     break;
                 case 1:
-                    context.fillStyle = "red";
-            }
-            context.fillRect(enemy.position.x, enemy.position.y, enemy.width, enemy.height);
+                    context.drawImage(
+                        enemy_image,
+                        1588,
+                        120,
+                        692,
+                        632,
+                        enemy.position.x,
+                        enemy.position.y,
+                        enemy.width,
+                        enemy.height
+                    );
+            };
         }   
 
 
@@ -48,9 +74,15 @@ export default class Enemy_Controller{
             this.enemies.push(new Enemy(this.GAME_WIDTH));
             this.spawn_delay = this.default_delay;
             if (this.default_delay != 50){
-                this.default_delay -= 5;
+                this.default_delay -= 3;
             }
         }
         this.spawn_delay -= 1;
+    }
+
+    reset(){
+        this.enemies = [];
+        this.default_delay = 150;
+        this.spawn_delay =150;
     }
 }
