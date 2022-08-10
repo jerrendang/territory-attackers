@@ -8,19 +8,20 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <canvas id="control_pics" height="720" width="380"></canvas>
-        <div id="start_button">
-            <input type="button" id="button">
-            <label for="button" id="b_label">
-                <img src="game/assets/images/start_button.png" alt="no pic" style="height: 100px;
-                                                                                   width: 259px;">
-            </label>
+        <div class="wrapper">
+            <canvas id="control_pics" height="720" width="380"></canvas>
+            <div id="start_button">
+                <input type="button" id="button">
+                <label for="button" id="b_label">
+                    <img src="game/assets/images/start_button.png" id="image" alt="no pic" style="height: 100px;
+                                                                                        width: 259px;">
+                </label>
+            </div>
+            <div class="g_screens">
+                <canvas id="game_screen" height="720" width="450"></canvas>
+                <canvas id="side_screen" height="150" width="400"></canvas>
+            </div>
         </div>
-        <div class="g_screens">
-            <canvas id="game_screen" height="720" width="450"></canvas>
-            <canvas id="side_screen" height="150" width="400"></canvas>
-        </div>
-
         <script src="dist/game.js"></script>
 
     </body>

@@ -2,11 +2,20 @@ import Projectile from "./projectile";
 
 export default class Projectile_Controller{
     projectiles = [];
-    timerTillNextProjectile = 0;
+    timerTillNextProjectile = 100;
+    isShooting = false;
 
 
     constructor(player){
         this.player = player;
+        setInterval(() => {
+            this.shoot();
+            if (this.timerTillNextProjectile <= 0) {
+                this.timerTillNextProjectile = 100
+            } else {
+                this.timerTillNextProjectile -= 10;
+            }
+        }, 20);
     }
 
     draw(context, projectile, projectile_image){
@@ -34,19 +43,27 @@ export default class Projectile_Controller{
         }
     }
 
-    update(dt, projectile){
+    update = (dt, projectile) => {
         if (!dt) return;
 
         projectile.position.y -= projectile.maxspeed;
     }
 
-    shoot(){
-        if (this.timerTillNextProjectile <= 0){
+    toggleShootingOn = () => {
+        this.isShooting = true;
+    }
+
+    toggleShootingOff = () => {
+        this.isShooting = false;
+    }
+
+    shoot = () => {
+        if (this.isShooting && this.timerTillNextProjectile <= 0){
             this.projectiles.push(new Projectile(this.player));
-        };
+        }
     }
     
-    reset(){
+    reset = () => {
         this.projectiles = [];
         this.timerTillNextProjectile = 0;
     }

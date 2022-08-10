@@ -8,6 +8,13 @@ body{
     white-space: nowrap;
 }
 
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
 #start_button{
     display: inline-block;
     text-align: center;
@@ -25,9 +32,13 @@ body{
     cursor: pointer;
 }
 
+#b_label:hover > #image{
+    transform: scale(1.2);
+}
+
 #control_pics{
     position: absolute;
-    background-color: black;
+    background-color: rgba(0,0,0,0);
 }
 
 #game_screen{

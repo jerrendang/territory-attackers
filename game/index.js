@@ -53,16 +53,6 @@ let collision_controller = new Collision_Controller(projectile_controller, enemy
 //player.draw(context, player_img);
 
 let last_time = 0;
-/*
-function start_game(){
-
-    game_loop();
-}
-
-function end_game(){
-
-}
-*/
 
 function game_loop(time_stamp){
     let delta_time = time_stamp - last_time;
@@ -84,7 +74,7 @@ function game_loop(time_stamp){
                             65);
         start_button_label.style = "display: block; margin-top: 10vh; margin-left: 4vw;";
         start_button_label.innerHTML = 
-        "<img src='game/assets/images/again_image.png' alt='no pic' style='height: 161px; width: 182px;'>";
+        "<img src='game/assets/images/again_image.png' alt='no pic' id='image' style='height: 161px; width: 182px;'>";
         
         return;
     }
@@ -120,6 +110,8 @@ function game_loop(time_stamp){
         enemy_controller.update(delta_time, enemy);
     });
 
+    
+
     projectile_controller.projectiles.forEach(projectile => {
         projectile_controller.draw(context, projectile, projectile_img);
         projectile_controller.update(delta_time, projectile)
@@ -134,7 +126,7 @@ function game_loop(time_stamp){
 new InputHandler(player, projectile_controller, start_button);
 
 
-start_button.addEventListener("click", function(e){
+start_button.addEventListener("click", (e) => {
     start_button_label.style = "display: none";
     player.reset();
     enemy_controller.reset();

@@ -33,16 +33,15 @@ export default class InputHandler{
                 case 83:
                     player.moveDown();
                     break;
-            }
-        });
 
-        document.addEventListener("keydown", event => {
-            switch(event.keyCode){
                 case 80:
-                    projectile_controller.shoot();
+                    projectile_controller.timerTillNextProjectile = 0;
+                    projectile_controller.toggleShootingOn();
                     break;
+                    
                 case 32:
-                    projectile_controller.shoot();
+                    projectile_controller.timerTillNextProjectile = 0;
+                    projectile_controller.toggleShootingOn();
                     break;
             }
         })
@@ -95,6 +94,16 @@ export default class InputHandler{
                     if (player.Yspeed > 0){
                         player.stopY();
                     }
+                    break;
+                
+                case 32:
+                    //projectile_controller.timerTillNextProjectile = 100;
+                    projectile_controller.toggleShootingOff()
+                    break;
+
+                case 80:
+                    //projectile_controller.timerTillNextProjectile = 100;
+                    projectile_controller.toggleShootingOff()
                     break;
             }
         });
